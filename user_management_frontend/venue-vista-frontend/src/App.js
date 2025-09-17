@@ -6,13 +6,23 @@ import LandingPage from "./components/home/landingpage";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 import Dashboard from "./components/dashboard/dashboard";
-import Profile from "./components/dashboard/profile"
+import Profile from "./components/dashboard/profile";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Router>
-      <ToastContainer position="top-right" />
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />

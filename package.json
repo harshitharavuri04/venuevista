@@ -1,0 +1,11 @@
+{
+  "name": "root-runner",
+  "private": true,
+  "scripts": {
+    "start:all": "npm-run-all --parallel start:venue_management_backend start:booking_management_backend start:user_management_backend start:user_management_frontend",
+    "start:venue_management_backend": "cd venue_management_backend && npm start",
+    "start:booking_management_backend": "cd booking_management_backend && npm start",
+    "start:user_management_backend": "cd user_management_backend && npm start",
+    "start:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm start"
+  }
+}

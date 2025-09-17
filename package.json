@@ -6,6 +6,12 @@
     "start:venue_management_backend": "cd venue_management_backend && npm start",
     "start:booking_management_backend": "cd booking_management_backend && npm start",
     "start:user_management_backend": "cd user_management_backend && npm start",
-    "start:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm start"
+    "start:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm start",
+
+    "build:all": "npm-run-all build:venue_management_backend build:booking_management_backend build:user_management_backend build:user_management_frontend",
+    "build:venue_management_backend": "cd venue_management_backend && npm run build",
+    "build:booking_management_backend": "cd booking_management_backend && npm run build",
+    "build:user_management_backend": "cd user_management_backend && npm run build",
+    "build:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm run build"
   }
 }

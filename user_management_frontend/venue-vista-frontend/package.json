@@ -9,7 +9,7 @@
     "cra-template": "1.2.0",
     "formik": "^2.4.6",
     "react": "^18.2.0",
-  "react-dom": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.1",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.5",
@@ -45,8 +45,7 @@
     "tailwindcss": "^4.0.5"
   },
   "engines": {
-  "node": "22.x",
-  "npm": "9.x"
-}
-
+    "node": "22.x",
+    "npm": "9.x"
+  }
 }

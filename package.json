@@ -1,17 +1,35 @@
 {
-  "name": "root-runner",
+  "name": "venue-vista-monorepo",
   "private": true,
+  "engines": {
+    "node": "18.17.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
-  "start:all": "npx npm-run-all --parallel start:venue_management_backend start:booking_management_backend start:user_management_backend start:user_management_frontend",
-  "start:venue_management_backend": "cd venue_management_backend && npm start",
-  "start:booking_management_backend": "cd booking_management_backend && npm start",
-  "start:user_management_backend": "cd user_management_backend && npm start",
-  "start:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npx react-scripts start",
-  "build:all": "npx npm-run-all build:venue_management_backend build:booking_management_backend build:user_management_backend build:user_management_frontend",
-  "build:venue_management_backend": "cd venue_management_backend && npm run build",
-  "build:booking_management_backend": "cd booking_management_backend && npm run build",
-  "build:user_management_backend": "cd user_management_backend && npm run build",
-  "build:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm ci --legacy-peer-deps && npx react-scripts build"
-}
-
+    "prebuild": "npm cache clean --force",
+    "build": "npm run build:all",
+    "build:all": "npm run build:backends && npm run build:frontend",
+    "build:backends": "echo 'Building backends...' && npm run build:venue_management_backend && npm run build:booking_management_backend && npm run build:user_management_backend",
+    "build:venue_management_backend": "cd venue_management_backend && npm ci --production=false",
+    "build:booking_management_backend": "cd booking_management_backend && npm ci --production=false", 
+    "build:user_management_backend": "cd user_management_backend && npm ci --production=false",
+    "build:frontend": "cd user_management_frontend/venue-vista-frontend && npm ci --production=false && npm run build",
+    "start": "npm run start:all",
+    "start:all": "npm run start:backends & npm run start:frontend",
+    "start:backends": "npm run start:venue_management_backend & npm run start:booking_management_backend & npm run start:user_management_backend",
+    "start:venue_management_backend": "cd venue_management_backend && npm start",
+    "start:booking_management_backend": "cd booking_management_backend && npm start",
+    "start:user_management_backend": "cd user_management_backend && npm start",
+    "start:frontend": "cd user_management_frontend/venue-vista-frontend && npm start",
+    "postinstall": "npm run install:all",
+    "install:all": "npm run install:backends && npm run install:frontend",
+    "install:backends": "cd venue_management_backend && npm install && cd ../booking_management_backend && npm install && cd ../user_management_backend && npm install",
+    "install:frontend": "cd user_management_frontend/venue-vista-frontend && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }

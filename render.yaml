@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: venue-vista-app
+    env: node
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    autoDeploy: true
+    rootDir: .
+    scaling:
+      minInstances: 1
+      maxInstances: 1

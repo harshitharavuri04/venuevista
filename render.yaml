@@ -1,21 +1,59 @@
 services:
+  # Frontend Service (Static Site)
   - type: web
-    name: venue-vista-app
-    env: node
-    region: singapore
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
+    name: venue-vista-frontend
+    env: static
+    buildCommand: cd user_management_frontend/venue-vista-frontend && npm ci && npm run build
+    staticPublishPath: user_management_frontend/venue-vista-frontend/build
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
-      - key: NPM_CONFIG_PRODUCTION
-        value: false
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+
+  # User Management Backend
+  - type: web
+    name: venue-vista-user-backend
+    env: node
+    buildCommand: cd user_management_backend && npm ci
+    startCommand: cd user_management_backend && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
-    autoDeploy: true
-    rootDir: .
-    scaling:
-      minInstances: 1
-      maxInstances: 1
+
+  # Booking Management Backend  
+  - type: web
+    name: venue-vista-booking-backend
+    env: node
+    buildCommand: cd booking_management_backend && npm ci
+    startCommand: cd booking_management_backend && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+
+  # Venue Management Backend
+  - type: web
+    name: venue-vista-venue-backend
+    env: node
+    buildCommand: cd venue_management_backend && npm ci
+    startCommand: cd venue_management_backend && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

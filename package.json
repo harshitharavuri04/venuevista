@@ -1,5 +1,5 @@
 {
-  "name": "venue-vista-frontend-only",
+  "name": "venue-vista-unified",
   "private": true,
   "engines": {
     "node": "18.17.0",
@@ -7,10 +7,12 @@
   },
   "scripts": {
     "build": "cd user_management_frontend/venue-vista-frontend && npm ci && npm run build",
-    "start": "cd user_management_frontend/venue-vista-frontend && npx serve -s build -p $PORT",
-    "postinstall": "cd user_management_frontend/venue-vista-frontend && npm install"
+    "start": "node server.js",
+    "postinstall": "npm run install:backends",
+    "install:backends": "cd user_management_backend && npm ci && cd ../booking_management_backend && npm ci && cd ../venue_management_backend && npm ci"
   },
   "dependencies": {
-    "serve": "^14.2.1"
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
   }
 }

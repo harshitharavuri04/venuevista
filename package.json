@@ -6,10 +6,10 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "build": "cd user_management_frontend/venue-vista-frontend && npm ci && npm run build",
+    "build": "cd user_management_frontend/venue-vista-frontend && npm install && npm run build",
     "start": "node server.js",
     "postinstall": "npm run install:backends",
-    "install:backends": "cd user_management_backend && npm ci && cd ../booking_management_backend && npm ci && cd ../venue_management_backend && npm ci"
+    "install:backends": "cd user_management_backend && npm install && cd ../booking_management_backend && npm install && cd ../venue_management_backend && npm install"
   },
   "dependencies": {
     "express": "^4.18.2",

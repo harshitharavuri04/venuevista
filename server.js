@@ -24,9 +24,9 @@ const startBackendService = (servicePath, port) => {
 
 // Start all backend services
 const services = [
-  startBackendService("user_management_backend", "3001"),
+  startBackendService("user_management_backend", "5000"),
   startBackendService("booking_management_backend", "3003"),
-  startBackendService("venue_management_backend", "3002"),
+  startBackendService("venue_management_backend", "3001"),
 ];
 
 // Proxy API requests to respective backend services

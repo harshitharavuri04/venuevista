@@ -33,7 +33,7 @@ const services = [
 app.use(
   "/api/users",
   createProxyMiddleware({
-    target: "http://localhost:3001",
+    target: "http://localhost:5000",
     changeOrigin: true,
   })
 );
@@ -49,7 +49,7 @@ app.use(
 app.use(
   "/api/venues",
   createProxyMiddleware({
-    target: "http://localhost:3002",
+    target: "http://localhost:3001",
     changeOrigin: true,
   })
 );

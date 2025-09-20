@@ -11,7 +11,7 @@
   "build:venue_management_backend": "cd venue_management_backend && npm run build",
   "build:booking_management_backend": "cd booking_management_backend && npm run build",
   "build:user_management_backend": "cd user_management_backend && npm run build",
-  "build:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npx react-scripts build"
+  "build:user_management_frontend": "cd user_management_frontend/venue-vista-frontend && npm ci --legacy-peer-deps && npx react-scripts build"
 }
 
 }
